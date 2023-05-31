@@ -13,10 +13,11 @@ data_cough <- read_csv(file_path)
 data_cough$year_month <- ymd(paste0(data_cough$year, "-", data_cough$month, "-01"))
 
 # Step 4: Plot time series graph
-ggplot(data_cough, aes(x = year_month, y = count)) +
-  geom_line(color = "green", size = 2) +
-  labs(x = "Year", y = "Count", title = "Time Series of Count Values") +
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
-  scale_y_continuous(limits = c(0, 70000)) +
-  theme_minimal()
 
+ggplot(data_cough, aes(x = year_month, y = count)) +
+  geom_line(color = "#F4A582", size = 2) +
+  labs(x = "Year", y = "Count", title = "                              피부염 발생 건수 ( 광주 )\n") +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_y_continuous(limits = c(0, 40000)) +
+  theme_minimal() +
+  theme(text = element_text(family = "NanumGothic"))

@@ -1,7 +1,7 @@
 #파일 읽기
-cough22<-read.table("/Users/mae/Desktop/archive/4-1/bigdata/20221031_2/cough.csv", header=FALSE, sep=',', encoding="UTF-8", skip=1) #1행을 제외하고 파일 불러오기
-asthma22<-read.table("/Users/mae/Desktop/archive/4-1/bigdata/20221031/asthma.csv", header=FALSE, sep=',', encoding="UTF-8", skip=1) #1행을 제외하고 파일 불러오기
-dermatitis22<-read.table("/Users/mae/Desktop/archive/4-1/bigdata/20221031/dermatitis.csv", header=FALSE, sep=',', encoding="UTF-8", skip=1) #1행을 제외하고 파일 불러오기
+cough22<-read.table("/Users/mae/Desktop/archive/4-1/bigdata/dataset/cough.csv", header=FALSE, sep=',', encoding="UTF-8", skip=1) #1행을 제외하고 파일 불러오기
+asthma22<-read.table("/Users/mae/Desktop/archive/4-1/bigdata/dataset/asthma.csv", header=FALSE, sep=',', encoding="UTF-8", skip=1) #1행을 제외하고 파일 불러오기
+#dermatitis22<-read.table("/Users/mae/Desktop/archive/4-1/dataset/20221031/dermatitis.csv", header=FALSE, sep=',', encoding="UTF-8", skip=1) #1행을 제외하고 파일 불러오기
 
 
 head(cough22)
