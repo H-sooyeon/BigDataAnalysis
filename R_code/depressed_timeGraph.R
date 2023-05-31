@@ -1,0 +1,34 @@
+# Step 1: Install and load necessary packages
+#install.packages("tidyverse")
+#install.packages("lubridate")
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+
+# Step 2: Read the "cough_gj.csv" file
+#file_fear <- "C:/BigData/BigDataAnalysis/resultData/covid19_fear_22(4).csv"
+file_depressed <- "C:/BigData/BigDataAnalysis/resultData/depressed(PHQ-9)_22(4).csv"
+#file_unrest <- "C:/BigData/BigDataAnalysis/resultData/unrest(GAD-7)_22(4).csv"
+
+#data_fear <- read_csv(file_fear)
+data_depressed <- read_csv(file_depressed)
+#data_unrest <- read_csv(file_unrest)
+
+# Step 3: Reshape the data into long format
+data_long <- data_depressed %>%
+  pivot_longer(cols = -구분, names_to = "year_month", values_to = "value") %>%
+  separate(year_month, into = c("year", "month"), sep = " ", remove = FALSE)
+
+# Step 4: Convert year and month to date format
+data_long$year_month <- ymd(paste0(data_long$year, "-", data_long$month, "-01"))
+
+# 색상 벡터 지정
+category_colors <- c("red","#B2182B", "#D6604D", "#F4A582", "black", "#92C5DE", "#4393C3", "#2166AC", "#FDDBC7", "#0066DA")
+
+# Step 5: Plot time series graph for each category
+ggplot(data_long, aes(x = year_month, y = value, color = 구분)) +
+  geom_line(size = 1) +
+  labs(x = "\nYear", y = "Value\n", title = "                                             20-22년 분기별 우울(PHQ-9) 시계열 그래프\n") +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  scale_color_manual(values = category_colors) +  # 각 카테고리에 대한 색상 지정
+  theme_minimal()
